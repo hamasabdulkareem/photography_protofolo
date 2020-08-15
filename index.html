@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="css/lightbox.min.css">
     <link rel="stylesheet" href="style2.css">
     <script src="https://cdn.jsdelivr.net/npm/web-animations-js@2.3.2/web-animations.min.js"></script>
+    <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="js/jquery.validate.js"></script>
     <title>Hamas_Alrawhani</title>
 </head>
 <body>
@@ -427,24 +429,41 @@
         </div>
      </div>
      <div class="contactForm">
-       <form>
-         <h2>Send Message</h2>
-         <div class="inputBox">
-           <input type="text" name="" required> 
-           <span>Full Name</span>
-         </div>
-         <div class="inputBox">
-           <input type="text" name="" required>
-           <span>Email</span>
-         </div>
-         <div class="inputBox">
-           <textarea required></textarea>
-           <span>Type your Message...</span>
-         </div>
-         <div class="inputBox">
-           <input type="submit" name="" value="Send">
-         </div>
-       </form>
+        <form id="commentForm">
+            <h2>Send Message</h2>
+            <div class="inputBox">
+               
+              <input type="text" name="name" id="cname" minlength="2" placeholder="Full Name" required> 
+            </div>
+            <div class="inputBox">
+               
+              <input type="email" name="email" id="cemail" placeholder="Email" required>
+              
+            </div>
+            <div class="inputBox">
+              
+               <label class="i">Photo_Sessions</label>
+               <select id="Photo_Sessions" required>
+                   <option value="Chooce">Chooce</option>
+                   <option value="nature">nature</option>
+                   <option value="baby">baby</option>
+                   <option value="flower">flower</option>
+                   <option value="coffee">coffee</option>
+                   <option value="people">people</option>
+                   <option value="food">food</option>
+                   <option value="clothes">clothes</option>
+                   <option value="animals">animals</option>
+               </select>
+             </div>
+            <div class="inputBox">
+                <label></label>
+              <textarea id="ccomment" placeholder="Type your Message..." maxlength="20" required></textarea>
+              <span id="score" style="color:rgb(187, 53, 53);">20 Character(s) Remaining</span> 
+            </div>
+            <div class="inputBox">
+              <input type="submit" name="" value="Send">
+            </div>
+          </form>
      </div>
   </div>
 </section>
@@ -600,6 +619,18 @@
     captionText.innerHTML = dots[slideIndex-1].alt;
   }
   </script>
+   <!--contactForme_script-->
+ <script>
+    $(commentForm).validate();
+    $(document).ready(function(){
+           var maxLength = 20;
+           $('textarea').keyup(function() {
+           var length = maxLength - $(this).val().length;
+           $("#score").text(length + " Character(s) Remaining");
+       });
+
+       });  
+</script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
